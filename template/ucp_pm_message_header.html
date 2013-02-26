@@ -1,0 +1,19 @@
+<div class="pagination">
+	<!-- IF TOTAL_MESSAGES -->
+			{PAGE_NUMBER}
+			<!-- IF FOLDER_MAX_MESSAGES neq 0 -->
+				[ <b>{FOLDER_CUR_MESSAGES}</b>/{FOLDER_MAX_MESSAGES} {L_MESSAGES} ({FOLDER_PERCENT}%) ]
+			<!-- ELSE -->
+				[ <b>{FOLDER_CUR_MESSAGES}</b> {L_MESSAGES} ]				
+			<!-- ENDIF -->
+	<!-- ENDIF -->
+
+	<!-- IF S_VIEW_MESSAGE -->
+		<span class="gensmall">
+		<!-- IF S_DISPLAY_HISTORY -->
+			<!-- IF U_VIEW_PREVIOUS_HISTORY --><a href="{U_VIEW_PREVIOUS_HISTORY}">{L_VIEW_PREVIOUS_HISTORY}</a> | <!-- ENDIF --><!-- IF U_VIEW_NEXT_HISTORY --><a href="{U_VIEW_NEXT_HISTORY}">{L_VIEW_NEXT_HISTORY}</a> | <!-- ENDIF -->
+		<!-- ENDIF --><a href="{U_PREVIOUS_PM}">{L_VIEW_PREVIOUS_PM}</a> | <a href="{U_NEXT_PM}">{L_VIEW_NEXT_PM}</a>&nbsp;
+		</span>
+	<!-- ENDIF -->
+	<div class="right"><!-- INCLUDE pagination.html --></div>
+</div>

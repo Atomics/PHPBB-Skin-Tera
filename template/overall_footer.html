@@ -1,0 +1,97 @@
+            <!-- IF not S_IS_BOT -->{RUN_CRON_TASK}<!-- ENDIF -->
+                </div>
+            </div>
+        </div>
+        <div class="main-bottom">
+            <div class="main-bottom-left"></div>
+            <div class="main-bottom-right"></div>
+            <div class="main-bottom-middle"></div>
+        </div>
+    </div>
+    <div id="fix-footer"></div>
+</div>
+<div id="footer">
+    <div class="footer-left"></div>
+    <div class="footer-right"></div>
+    <div class="footer-middle">
+        <div class="footer-middle-left"></div>
+        <div class="footer-middle-right"></div>
+        <div class="footer-middle-middle">
+            <ul class="footer-menu">
+                <li><a href="{U_INDEX}">Accueil</a></li>
+                <li><a href="http://www.tera-existence.com">Site Internet</a></li>
+                <li><a href="{U_INDEX}">Nous rejoindre</a></li>
+                <li><a href="http://forum.tera-existence.com/viewforum.php?f=41">Support</a></li>
+                <li style="background: none;"><a href="http://marcsalomon.lotthe.fr/" title="Marc Salomon, Pilote de prestige, Roi du ciel">Marc Salomon</a></li>
+                <!-- <li style="background: none;"><a href="mailto:support@tera-existence.com">Nous contacter</a></li> -->
+            </ul>
+            <div class="footer-text">
+                <!-- IF U_ACP -->[ <a href="{U_ACP}">{L_ACP}</a> ]<br /><!-- ENDIF -->
+                © 2012 - Existence - Codage et Design par Existence - Tous droits réservés <br />
+                Certains éléments de ce site sont la propriété intellectuelle de Bluehole, ces éléments peuvent être retirés sur simple demande de l'auteur.<br />
+                Toute marque citée dans ces pages est la propriété de son dépositaire.<br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fb-login" style="display:none;">
+    <h2>CONNEXION</h2>
+    <div id="form-login">
+        <form method="post" action="{S_LOGIN_ACTION}">
+            <center>
+                <!-- IF S_AL_WL_ENABLED --> 
+                <a href="{U_AL_WL_AUTHORIZE}" style="padding: 0px 5px;"><img src="/alternatelogin/images/windows_live_connect.png" alt="Windows Live Connect" /></a> 
+                <!-- ENDIF --> 
+
+                <!-- IF S_AL_FB_ENABLED --> 
+                <a onclick="window.location='alternatelogin/al_fb_connect.php';" href="#" style="padding: 0px 5px;"><img src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_medium_long.gif" alt="Login with your Facebook account!" /></a> 
+                <!-- ENDIF --> 
+
+                <!-- IF S_AL_TW_ENABLED --> 
+                <a href="{U_AL_TW_REQUEST}" style="padding: 0px 5px;"><img src="/alternatelogin/images/sign-in-with-twitter-l.png" alt="Windows Live Connect" /></a> 
+                <!-- ENDIF -->
+            </center>
+            <br /><br /><br />
+            <label for="username">{L_USERNAME} :</label><input type="text" id="username" name="username" /><br />
+            <label for="password">{L_PASSWORD}:</label><input id="password" type="password" name="password" /><br />
+            <label for="autologin">{L_LOG_ME_IN} :</label><input type="checkbox" id="autologin" name="autologin" /><br />
+            <input type="submit" name="login" value="" />
+            {S_LOGIN_REDIRECT}
+            {S_FORM_TOKEN}  
+        </form>
+    </div>
+</div>
+
+<div id="voteMenu">
+    <ul>
+        <li><a href="http://www.rpg-paradize.com/?page=vote&vote=32042" target="_blank" title="RPG Paradize"><img src="/images/rpg.png" alt="" /></a></li>
+        <!--<li><a href="#gowonda" title="Gowonda"><img src="/images/gowonda.png" alt="" /></a></li>-->
+    </ul>
+</div>
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#voteMenu').appMenu({
+            showControl: false,
+            showControlText: false,
+        });
+        var randomImages = ['0','1','2','3','4'];
+        var rndNum = Math.floor(Math.random() * randomImages.length);
+        $("html").css("background-image","url({T_THEME_PATH}/images/bg/" + rndNum + ".jpg)")
+        $("html").css("background-size","cover")
+	$(".login").fancybox({
+		maxWidth	: 670,
+		maxHeight	: 326,
+                width           : 670,
+                height          : 326,
+		fitToView	: false,
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+    });
+</script>
+</body>
+</html>

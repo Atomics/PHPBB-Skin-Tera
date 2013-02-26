@@ -1,0 +1,108 @@
+<!-- INCLUDE overall_header.html -->
+
+<form action="{S_LOGIN_ACTION}" method="post">
+<!-- IF (S_AL_WL_ENABLED or S_AL_FB_ENABLED or S_AL_TW_ENABLED) and not S_ADMIN_AUTH --> 
+<table class="tablebg forum2" width="100%" cellspacing="1">
+    <tr>
+        <td class="cat">
+            <h4>{L_SOCIAL_LOGIN_OPTIONS}</h3> 
+        </td>
+    </tr>
+    <tr>
+        <td class="center" style="padding: 10px;">
+            <!-- IF S_AL_WL_ENABLED --> 
+                <a href="{U_AL_WL_AUTHORIZE}"><img src="alternatelogin/images/windows_live_connect.png" alt="Windows Live Connect" /></a> <br /> <br />
+                <!-- ENDIF --> 
+         
+                <!-- IF S_AL_FB_ENABLED --> 
+                    <a onclick="window.location='alternatelogin/al_fb_connect.php';" href="#"> 
+                            <img src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_medium_long.gif" alt="Authentification facebook" /> 
+                    </a>  <br /> <br />
+                <!-- ENDIF --> 
+                
+                <!-- IF S_AL_TW_ENABLED --> 
+                <a href="{U_AL_TW_REQUEST}"><img src="alternatelogin/images/sign-in-with-twitter-l.png" alt="Twitter Connect" /></a> 
+                <!-- ENDIF --> 
+        </td>
+    </tr>
+</table>
+<!-- ENDIF -->
+<table class="tablebg" width="100%" cellspacing="1">
+<tr>
+	<!-- IF not S_ADMIN_AUTH -->
+		<th colspan="2">{L_LOGIN}</th>
+	<!-- ELSE -->
+		<th>{LOGIN_EXPLAIN}</th>
+	<!-- ENDIF -->
+</tr>
+<!-- IF LOGIN_EXPLAIN && not S_ADMIN_AUTH -->
+	<tr>
+		<td class="row3" colspan="2" align="center"><span class="gensmall">{LOGIN_EXPLAIN}</span></td>
+	</tr>
+<!-- ENDIF -->
+<tr>
+	<td <!-- IF not S_ADMIN_AUTH -->class="row2"<!-- ELSE -->class="row1"<!-- ENDIF -->>
+		<!-- IF LOGIN_ERROR -->
+            <div class="center"><span class="error" style="text-align:">{LOGIN_ERROR}</span></div><br />
+		<!-- ENDIF -->
+        <div id="login-part">
+            <label for="username">{L_USERNAME} :</label><input class="post" type="text" name="{USERNAME_CREDENTIAL}" size="25" value="{USERNAME}" tabindex="1" /><br />
+            <label for="password">{L_PASSWORD} :</label><input class="post" type="password" name="{PASSWORD_CREDENTIAL}" size="25" tabindex="2" /><br />
+        </div>
+		<!-- IF S_DISPLAY_FULL_LOGIN -->
+				<div class="center"><input type="checkbox" class="radio" name="viewonline" tabindex="4" /> <span class="gensmall">{L_HIDE_ME}</span></div>
+			<!-- IF S_AUTOLOGIN_ENABLED -->
+                <div class="center"><input type="checkbox" class="radio" name="autologin" tabindex="3" /> <span class="gensmall">{L_LOG_ME_IN}</span></div>
+			<!-- ENDIF -->
+		<!-- ENDIF -->
+		<br /><div class="center">
+        <!-- IF not S_ADMIN_AUTH and S_REGISTER_ENABLED -->
+			<a class="gensmall" href="{U_REGISTER}">{L_REGISTER}</a>
+		<!-- ENDIF -->
+        <!-- IF U_SEND_PASSWORD --> - <a class="gensmall" href="{U_SEND_PASSWORD}">{L_FORGOT_PASS}</a><!-- ENDIF -->
+		<!-- IF U_RESEND_ACTIVATION and not S_ADMIN_AUTH --><div class="center"><a class="gensmall" href="{U_RESEND_ACTIVATION}">{L_RESEND_ACTIVATION}</a></div><!-- ENDIF -->
+		</div>
+	</td>
+</tr>
+
+<!-- IF CAPTCHA_TEMPLATE and S_CONFIRM_CODE -->
+</table>
+<table class="tablebg no-bg-table" width="100%" cellspacing="1">
+		
+	<!-- INCLUDE {CAPTCHA_TEMPLATE} -->
+<!-- ENDIF -->
+
+{S_LOGIN_REDIRECT}
+<tr>
+	<td class="cat" <!-- IF not S_ADMIN_AUTH or S_CONFIRM_CODE -->colspan="2"<!-- ENDIF --> align="center">{S_HIDDEN_FIELDS}<input type="submit" name="login" class="btnmain" value="{L_LOGIN}" tabindex="5" /></td>
+</tr>
+</table>
+{S_FORM_TOKEN}
+</form>
+
+<br clear="all" />
+
+<!-- INCLUDE breadcrumbs.html -->
+
+<br clear="all" />
+
+<div align="{S_CONTENT_FLOW_END}"><!-- INCLUDE jumpbox.html --></div>
+
+<script type="text/javascript">
+// <![CDATA[
+	(function()
+	{
+		var elements = document.getElementsByName("<!-- IF S_ADMIN_AUTH -->{PASSWORD_CREDENTIAL}<!-- ELSE -->{USERNAME_CREDENTIAL}<!-- ENDIF -->");
+		for (var i = 0; i < elements.length; ++i)
+		{
+			if (elements[i].tagName.toLowerCase() == 'input')
+			{
+				elements[i].focus();
+				break;
+			}
+		}
+	})();
+// ]]>
+</script>
+
+<!-- INCLUDE overall_footer.html -->

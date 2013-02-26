@@ -1,0 +1,29 @@
+<!-- INCLUDE overall_header.html -->
+<table class="tablebg forum2" width="100%" style="padding: 10px;" cellspacing="1">
+    <tr>
+        <td class="center">
+            <script src="http://connect.facebook.net/{S_FB_INT}/all.js#appId={S_FB_APP_ID}&xfbml=1"></script>
+                  <script>
+                     FB.init({
+                        appId:'{S_FB_APP_ID}',
+                        cookie:true,
+                        status:true,
+                        xfbml:true
+                     });
+                  </script>
+            <fb:registration
+              fields="[
+                        {'name' : 'name'},
+                        {'name' : 'username', 'description' : '{L_FB_DESCRIPTION}', 'type' : 'text'},
+                        {'name' : 'birthday'},
+                        {'name' : 'gender'},
+                        {'name' : 'location'},
+                        {'name' : 'email'},
+                      ]"
+              redirect-uri="{S_REDIRECT_URI}"
+              width="530">
+            </fb:registration>
+        </td>
+    </tr>
+</table>
+<!-- INCLUDE overall_footer.html -->
